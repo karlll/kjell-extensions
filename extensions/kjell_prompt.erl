@@ -17,6 +17,7 @@
 
 -import(kjell_profile,[q/2]).
 
+
 extends() ->
     {
       % Name, Version, Description
@@ -28,13 +29,23 @@ extends() ->
     }.
 
 prompt(Args) ->
-    NodeName = lists:flatten(io_lib:format("~ts",[erlang:node()])),
+    NodeName = erlang:node(),
     [{history, Count}] = Args,
-    CountStr = lists:flatten(io_lib:format("~p",[Count])),
+    CountStr = lists:flatten(io_lib:format("~p ",[Count])),
+    get_prompt(CountStr,NodeName).
+
+get_prompt(CountStr,NodeName) when NodeName == nonode@nohost ->
     [q(prompt_start, <<"⮀ ">>), 
      q(prompt_text,CountStr),
-     q(prompt_text,<<" ⮁ ">>),
-     q(prompt_text,NodeName),
-     q(prompt_end,<<" ⮀ ">>)].
+     q(prompt_end,<<"⮀ ">>)];
+
+get_prompt(CountStr,NodeName) ->
+    NodeStr = lists:flatten(io_lib:format("~ts ",[NodeName])),
+    [q(prompt_start, <<"⮀ ">>), 
+     q(prompt_text,CountStr),
+     q(prompt_text,<<"⮁ ">>),
+     q(prompt_text,NodeStr),
+     q(prompt_end,<<"⮀ ">>)].
+
 
 
