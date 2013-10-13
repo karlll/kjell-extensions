@@ -11,11 +11,11 @@ The following extension points are defined
   Returns a custom prompt that replaces the default one.
   Extensions should export `prompt(LineCount) -> PromptChars`
 * `startup_msg` - Activated before the first input prompt is shown.
-  Returns a startup message. Extensions should export `startup_msg() -> {ok, Message}`
+  Returns a startup message. Extensions should export `startup_msg(_Arg) -> {ok, Message}`
+* `startup` - Activated when kjell is started, after configuration is initialized. Extensions should export `startup(_Arg) -> {ok} | {error,Msg}`
 
 The following extension points are defined but yet not implemented
 
-* `startup`
 * `shell_input_line`
 * `shell_output_line`
 * `command`
@@ -35,7 +35,7 @@ extends() ->
       ]
     }.
 
-msg() -> "Hello world.".
+msg(_Arg) -> "Hello world.".
 ```   
 
 The example above extends the startup_msg extension point, and will return hello world when the startup_msg extension point is activated.
