@@ -49,6 +49,7 @@ where
 
 `color = black | red | green | yellow | blue | magenta | cyan | white | default_fg | default_bg`
 
+The support for certain text attributes is dependent on the terminal emulator used.
 
 ## Example profile
 
