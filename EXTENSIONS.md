@@ -13,7 +13,7 @@ The following extension points are defined
 * `startup_msg` - Activated before the first input prompt is shown.
   Returns a startup message. Extensions should export `startup_msg(_Arg) -> {ok, Message}`
 * `startup` - Activated when kjell is started, after configuration is initialized. Extensions should export `startup(_Arg) -> {ok} | {error,Msg}`
-* `command` - Activated when a function exported by the command extension is invoked from the shell.
+* `command` - Activated when a function exported by the command extension is invoked from the shell. The description string returned by the extends/0 function in the command extension should be in the format `"command_name(Arg1,Arg2) -- One line description"`, this will be displayed when help/0 is invoked in the shell.
 
 The following extension points are defined but yet not implemented
 
