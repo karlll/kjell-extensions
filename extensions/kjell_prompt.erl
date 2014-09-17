@@ -36,9 +36,6 @@ prompt(Args) ->
     CountStr = lists:flatten(io_lib:format("~p ",[Count])),
     get_prompt(CountStr,NodeName).
 
-%%liten-apa ⮀ ⮀ 0 ⮁ vim ⮀ 1 ⮁ project  2 ⮁ build  3 ⮁ doc
-
-
 get_prompt(CountStr,NodeName) when NodeName == nonode@nohost ->
     [q(prompt_start, " "), 
      q(prompt_text,CountStr),
