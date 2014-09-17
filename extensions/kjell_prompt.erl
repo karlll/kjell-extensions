@@ -1,3 +1,5 @@
+%% -*- coding: utf-8 -*-
+
 -module(kjell_prompt).
 
 % must be exported by all extensions
@@ -34,18 +36,20 @@ prompt(Args) ->
     CountStr = lists:flatten(io_lib:format("~p ",[Count])),
     get_prompt(CountStr,NodeName).
 
+%%liten-apa ⮀ ⮀ 0 ⮁ vim ⮀ 1 ⮁ project  2 ⮁ build  3 ⮁ doc
+
+
 get_prompt(CountStr,NodeName) when NodeName == nonode@nohost ->
-    [q(prompt_start, <<"⮀ ">>), 
+    [q(prompt_start, " "), 
      q(prompt_text,CountStr),
-     q(prompt_end,<<"⮀ ">>)];
+     q(prompt_end," ")];
 
 get_prompt(CountStr,NodeName) ->
     NodeStr = lists:flatten(io_lib:format("~ts ",[NodeName])),
-    [q(prompt_start, <<"⮀ ">>), 
+    [q(prompt_start, " "), 
      q(prompt_text,CountStr),
-     q(prompt_text,<<"⮁ ">>),
+     q(prompt_text," "),
      q(prompt_text,NodeStr),
-     q(prompt_end,<<"⮀ ">>)].
-
+     q(prompt_end," ")].
 
 
