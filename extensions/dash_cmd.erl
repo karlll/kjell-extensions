@@ -10,7 +10,7 @@
 extends() ->
   {
     % Name, Version, Description
-    {"dash_cmd","0.0.1","Dash integration (http://kapeli.com/dash)"},
+    {"dash_cmd","0.0.2","Dash integration (http://kapeli.com/dash)"},
     [
       % Extension point, {Module,Function}, Description
       {command,{?MODULE,d},"d(String) - Search Erlang doc set using Dash"},
@@ -19,7 +19,7 @@ extends() ->
   }.
 
 d(SearchStr) ->
-  os:cmd(?INVOKE_CMD ++ "erlang:" ++ SearchStr),
+  os:cmd(?INVOKE_CMD ++ "erl:" ++ SearchStr),
   ok.
 
 
